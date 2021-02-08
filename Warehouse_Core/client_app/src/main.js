@@ -1,22 +1,37 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+// Import Bootstrap an BootstrapVue CSS files (order is important)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import Admin from '@/components/Admin'
+import Storage from '@/components/Storage'
+import Logs from '@/components/Logs'
+import Procurement from '@/components/Procurement'
+import Search from '@/components/Search'
+import Store from '@/components/Store'
+import Suppliers from '@/components/Suppliers'
+import Task from '@/components/Task'
+import Transfers from '@/components/Transfers'
+import Users from '@/components/Users'
 
 Vue.config.productionTip = false
 
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
-const Admin = { template: '<div>admin</div>' }
 
-// 2. Define some routes
-// Each route should map to a component. The "component" can
-// either be an actual component constructor created via
-// `Vue.extend()`, or just a component options object.
-// We'll talk about nested routes later.
 const routes = [
-  { path: '/foo', component: Foo },
-  { path: '/bar', component: Bar },
-  { path: '/admin', component: Admin }
+  { path: '/admin', name:'admin', component: Admin },
+  { path: '/storage', name:'storage', component: Storage },
+  { path: '/logs', name:'logs', component: Logs },
+  { path: '/procurement', name:'procurement', component:Procurement  },
+  { path: '/search', name:'search', component: Search  },
+  { path: '/store', name:'store', component: Store },
+  { path: '/suppliers', name:'suppliers', component:Suppliers  },
+  { path: '/task', name:'task', component: Task  },
+  { path: '/transfers', name:'transfers', component: Transfers  },
+  { path: '/users', name:'users', component: Users  },
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -33,4 +48,7 @@ new Vue({
   router
 }).$mount('#app')
 
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 
