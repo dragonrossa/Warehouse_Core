@@ -21,6 +21,23 @@
     <p>{{title}}</p>
 
         <!-- Details  -->
+
+     <p>
+      <router-link to="/createstore">{{ option1 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/liststores">{{ option2 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/updatestore">{{ option3 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/deletestore">{{ option4 }}</router-link>
+    </p>
+
     
     <router-view></router-view>
   </div>
@@ -28,11 +45,18 @@
 
 <script>
 export default {
-  data() {
-    return {
-      title: "Store"
+
+  data(){
+    return{
+      title:"Store",
+      option1:"Create new store",
+      option2:"List all stores",
+      option3:"Edit stores",
+      option4:"Delete stores"
     };
   },
+
+
 };
 
 </script>

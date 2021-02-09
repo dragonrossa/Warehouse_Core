@@ -3,6 +3,22 @@
     <p>{{title}}</p>
 
         <!-- Details  -->
+
+             <p>
+      <router-link to="/createtransfer">{{ option1 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/listtransfers">{{ option2 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/updatetransfer">{{ option3 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/deletetransfer">{{ option4 }}</router-link>
+    </p>
     
     <router-view></router-view>
   </div>
@@ -12,7 +28,11 @@
 export default {
   data() {
     return {
-      title: "Transfers"
+      title: "Transfers",
+      option1: "Create transfer",
+      option2: "List transfers",
+      option3: "Update transfer",
+      option4: "Delete transfer"
     };
   },
 };

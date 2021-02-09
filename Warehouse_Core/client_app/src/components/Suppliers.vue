@@ -3,6 +3,23 @@
     <p>{{title}}</p>
 
         <!-- Details  -->
+
+             <p>
+      <router-link to="/createsupplier">{{ option1 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/listsupplier">{{ option2 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/updatesupplier">{{ option3 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/deletesupplier">{{ option4 }}</router-link>
+    </p>
+
     
     <router-view></router-view>
   </div>
@@ -12,7 +29,11 @@
 export default {
   data() {
     return {
-      title: "Suppliers"
+      title: "Suppliers",
+      option1:"Create Supplier",
+      option2:"List Supplier",
+      option3: "Update Supplier",
+      option4: "Delete Supplier"
     };
   },
 };

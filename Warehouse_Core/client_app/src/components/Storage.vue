@@ -3,6 +3,23 @@
     <p>{{title}}</p>
 
         <!-- Details  -->
+
+         <p>
+      <router-link to="/createitem">{{ option1 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/listitems">{{ option2 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/updateitem">{{ option3 }}</router-link>
+    </p>
+
+    <p>
+      <router-link to="/deleteitem">{{ option4 }}</router-link>
+    </p>
+
     
     <router-view></router-view>
   </div>
@@ -12,7 +29,11 @@
 export default {
   data() {
     return {
-      title: "Storage"
+      title: "Storage",
+      option1:"Create item",
+      option2:"List items",
+      option3: "Update item",
+      option4: "Delete item"
     };
   },
 };
