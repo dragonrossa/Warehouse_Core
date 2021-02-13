@@ -8,7 +8,7 @@
       <router-link to="/edituser" v-bind:likes="42" username="matt"
         >{{ option1 }}
 
-        <EditUser :v-bind="props" />
+        <EditUser v-bind:name="cameraNameeee" />
       </router-link>
     </p>
 
@@ -27,9 +27,9 @@ export default {
   name: "ParentComponent",
   mounted() {},
   props: {
-    firstname: {
+    name: {
       type:String,
-      value:"Bubu"
+      value:"abcd"
     },
   },
   components: {

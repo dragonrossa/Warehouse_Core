@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VueDemoWithAsp.NetCore.VueCoreConnection;
+using Microsoft.EntityFrameworkCore;
+using Warehouse_Core.Context;
 
 namespace VueDemoWithAsp.NetCore
 {
@@ -20,6 +22,11 @@ namespace VueDemoWithAsp.NetCore
         // This method gets called by the runtime. Use this method to add services to the container.  
         public void ConfigureServices(IServiceCollection services)
         {
+            //Create new database
+            services.AddDbContext<WarehouseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Warehouse_Core")));
+            //Create new IN-memory database
+            //services.AddDbContext<WarehouseContext>(opt => opt.UseInMemoryDatabase("Warehouse_Core"));
+
             services.AddControllers();
             // connect vue app - middleware  
             services.AddSpaStaticFiles(options => options.RootPath = "client_app/dist");

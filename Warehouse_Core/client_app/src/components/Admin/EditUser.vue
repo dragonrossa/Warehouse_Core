@@ -3,9 +3,7 @@
     <p>{{ title }}</p>
 
     <!-- Details  -->
-    <p>{{ input }}</p>
-
-    <p>{{ lastname }}</p>
+    <p>{{ name }}</p>
 
     <router-view></router-view>
   </div>
@@ -16,7 +14,7 @@ export default {
   //  get filteredRestaurants(){
   //   return this.$attrs
   // },
-  props: ["firstname", "lastname"],
+  props: ["name"],
   data() {
     return {
       title: "Admin",
