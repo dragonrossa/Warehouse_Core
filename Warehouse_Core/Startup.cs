@@ -24,6 +24,7 @@ namespace VueDemoWithAsp.NetCore
         {
             //Create new database
             services.AddDbContext<WarehouseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Warehouse_Core")));
+
             //Create new IN-memory database
             //services.AddDbContext<WarehouseContext>(opt => opt.UseInMemoryDatabase("Warehouse_Core"));
 
