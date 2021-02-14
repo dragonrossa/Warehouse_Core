@@ -1,11 +1,14 @@
 import Vue from 'vue'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-
-// Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+// import { BNavbar } from 'bootstrap-vue'
+// Vue.component('b-navbar', BNavbar)
+
+Vue.use(BootstrapVue)
+
 
 import Admin from '@/components/Admin'
 import Storage from '@/components/Storage'
@@ -59,11 +62,16 @@ import ListUsers from '@/components/Users/ListUsers'
 import UpdateUsers from '@/components/Users/UpdateUser'
 import DeleteUser from '@/components/Users/DeleteUser'
 
+//Import StartPage component
+
+import StartPage from '@/components/StartPage'
+
 
 Vue.config.productionTip = false
 
 
 const routes = [
+  {path: '/', redirect: '/start', component:StartPage},
   { path: '/admin', name:'admin', component: Admin},
   { path: '/storage', name:'storage', component: Storage},
   { path: '/logs', name:'logs', component: Logs},
@@ -96,6 +104,7 @@ const routes = [
   { path: '/listusers', name:'listusers', component: ListUsers },
   { path: '/updateuser', name:'updateuser', component: UpdateUsers },
   { path: '/deleteuser', name:'deleteuser', component: DeleteUser},
+  { path: '/back', name:'back', component: StartPage},
 
 ]
 
@@ -113,7 +122,6 @@ new Vue({
   router
 }).$mount('#app')
 
-Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 

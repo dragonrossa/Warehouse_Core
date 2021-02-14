@@ -1,39 +1,44 @@
 <template>
   <div class="admin">
-    <p>{{ title }}</p>
+    <Navbar />
 
-    <!-- Details  -->
+    <div id="content">
+      <p>{{ title }}</p>
 
-    <p>
-      <router-link to="/edituser" v-bind:likes="42" username="matt"
-        >{{ option1 }}
+      <!-- Details  -->
 
-        <EditUser v-bind:name="cameraNameeee" />
-      </router-link>
-    </p>
+      <p>
+        <router-link to="/edituser" v-bind:likes="42" username="matt"
+          >{{ option1 }}
 
-    <p>
-      <router-link to="/roles" v-bind:likes="42">{{ option2 }}</router-link>
-    </p>
+          <EditUser v-bind:name="cameraNameeee" />
+        </router-link>
+      </p>
 
+      <p>
+        <router-link to="/roles" v-bind:likes="42">{{ option2 }}</router-link>
+      </p>
+    </div>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import EditUser from "./Admin/EditUser.vue";
+import EditUser from "./Admin/EditUser";
+import Navbar from "./Navbar";
 
 export default {
-  name: "ParentComponent",
+  name: "Admin",
   mounted() {},
   props: {
     name: {
-      type:String,
-      value:"abcd"
+      type: String,
+      value: "admin-test",
     },
   },
   components: {
     EditUser,
+    Navbar,
   },
   data() {
     return {
@@ -47,19 +52,5 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped src="../assets/style/warehouse_style.css">
 </style>

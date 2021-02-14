@@ -1,5 +1,7 @@
 <template>
   <div class="store">
+     <Navbar />
+    
     <!-- <div>
     <b-button v-b-toggle.sidebar-footer>Toggle Sidebar</b-button>
     <b-sidebar id="sidebar-footer" aria-label="Sidebar with custom footer" no-header shadow>
@@ -18,63 +20,51 @@
       </div>
     </b-sidebar>
   </div> -->
-    <p>{{title}}</p>
+    <div id="content">
+      <p>{{ title }}</p>
 
-        <!-- Details  -->
+      <!-- Details  -->
 
-     <p>
-      <router-link to="/createstore">{{ option1 }}</router-link>
-    </p>
+      <p>
+        <router-link to="/createstore">{{ option1 }}</router-link>
+      </p>
 
-    <p>
-      <router-link to="/liststores">{{ option2 }}</router-link>
-    </p>
+      <p>
+        <router-link to="/liststores">{{ option2 }}</router-link>
+      </p>
 
-    <p>
-      <router-link to="/updatestore">{{ option3 }}</router-link>
-    </p>
+      <p>
+        <router-link to="/updatestore">{{ option3 }}</router-link>
+      </p>
 
-    <p>
-      <router-link to="/deletestore">{{ option4 }}</router-link>
-    </p>
+      <p>
+        <router-link to="/deletestore">{{ option4 }}</router-link>
+      </p>
+    </div>
 
-    
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {
+import Navbar from "./Navbar";
 
-  data(){
-    return{
-      title:"Store",
-      option1:"Create new store",
-      option2:"List all stores",
-      option3:"Edit stores",
-      option4:"Delete stores"
+export default {
+components: {
+    Navbar,
+  },
+  data() {
+    return {
+      title: "Store",
+      option1: "Create new store",
+      option2: "List all stores",
+      option3: "Edit stores",
+      option4: "Delete stores",
     };
   },
-
-
 };
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped src="../assets/style/warehouse_style.css">
 </style>
