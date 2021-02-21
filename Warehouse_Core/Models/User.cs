@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Warehouse_Core.Context;
 
 namespace Warehouse_Core.Models
 {
@@ -51,10 +52,16 @@ namespace Warehouse_Core.Models
         //public IPagedList<UserModels> userAccess { get; set; }
 
 
-        public void AddNewItemToUser()
-        {
-            this._mediator.AddNewItem(this,"User");
+        //public void AddNewItemToUser()
+        //{
+        //    this._mediator.AddNewItem(this,"User");
 
+        //}
+
+        public User Add(User user, WarehouseContext _context)
+        {
+            this._mediator.NewUser(user, _context);
+            return user;
         }
     }
 }

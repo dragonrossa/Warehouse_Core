@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Warehouse_Core.Context;
 using Warehouse_Core.Models;
 
 namespace Warehouse_Core.Mediator
@@ -56,9 +58,12 @@ namespace Warehouse_Core.Mediator
             this._component10.SetMediator(this);
         }
 
-        public void AddNewItem(object item, string type)
+ 
+
+        public object AddNewItem(object item, string type)
         {
 
+         
             if (type == "Admin")
             {
                 this._component1.AddNewItemToAdmin();
@@ -97,9 +102,20 @@ namespace Warehouse_Core.Mediator
             }
             if (type == "User")
             {
-                this._component10.AddNewItemToUser();
-            }
+               // this._component10.AddNewItemToUser();
+                var a = "Ovo je user";
+                return item;
 
+            }
+            return item;
+
+        }
+
+        public User NewUser(User user, WarehouseContext _context)
+        {
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            return user;
         }
 
     }
