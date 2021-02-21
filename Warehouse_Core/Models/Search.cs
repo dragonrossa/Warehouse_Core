@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 
 namespace Warehouse_Core.Models
 {
-    public class Search
+    class Search:BaseComponent
     {
+        public void AddNewItemToSearch()
+        {
+         
+            this._mediator.AddNewItem(this,"Search");
+
+        }
     }
 }

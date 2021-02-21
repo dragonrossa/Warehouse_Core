@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 
 namespace Warehouse_Core.Models
 {
-    public class Supplier
+    class Supplier:BaseComponent
     {
+        public void AddNewItemToSupplier()
+        {
+
+            this._mediator.AddNewItem(this,"Supplier");
+
+        }
     }
 }

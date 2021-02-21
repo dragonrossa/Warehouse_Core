@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 
 namespace Warehouse_Core.Models
 {
-    public class Transfer
+    class Transfer:BaseComponent
     {
+        public void AddNewItemToTransfer()
+        {
+
+            this._mediator.AddNewItem(this, "Transfer");
+
+        }
     }
 }

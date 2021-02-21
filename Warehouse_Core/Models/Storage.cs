@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace Warehouse_Core.Models
 {
-    public class Storage
+   public class Storage:BaseComponent
     {
-        //public Storage()
-        //{
-                
-        //}
-
-
+       
         //Storage properties
 
         //private WarehouseContext _db = new WarehouseContext();
@@ -74,6 +69,13 @@ namespace Warehouse_Core.Models
         public DateTime? Date { get; set; }
 
         //public IEnumerable<LaptopModels> laptop { get; set; }
+
+        public void AddNewItemToStorage()
+        {
+
+            this._mediator.AddNewItem(this,"Storage");
+
+        }
 
 
     }

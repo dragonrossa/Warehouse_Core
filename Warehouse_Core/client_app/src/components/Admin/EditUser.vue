@@ -12,11 +12,12 @@
 </template>
 
 <script>
+
 export default {
-  //  get filteredRestaurants(){
-  //   return this.$attrs
-  // },
-  props: ["name"],
+ name: "HelloWorld2",
+  props: {
+    name: String,
+  },
   data() {
     return {
       title: "Admin",

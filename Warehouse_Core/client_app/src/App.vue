@@ -1,42 +1,112 @@
 <template>
   <div id="app">
     <Navbar />
-    <img alt="Vue logo" id="warehousePicture" src="./assets/warehouse.png" />
+    <img
+      alt="Vue logo"
+      id="warehousePicture"
+      src="./assets/warehouse.png"
+      v-if="!isHidden"
+    />
+
     <HelloWorld msg="Welcome to Warehouse" />
     <div id="content">
-      <p>{{ option0 }}</p>
+      <p v-if="!isHidden">{{ option0 }}</p>
       <p>
-        <router-link to="/admin">{{ option1 }}</router-link>
+        <router-link to="/admin">
+          <span v-on:click="isHidden = !isHidden">
+            <span v-if="!isHidden">
+              {{ option1 }}
+            </span></span
+          >
+        </router-link>
       </p>
       <p>
-        <router-link to="/storage">{{ option2 }}</router-link>
+        <router-link to="/storage">
+         <span v-on:click="isHidden = !isHidden">
+          <span v-if="!isHidden">
+            {{ option2 }}
+          </span>
+            </span>
+        </router-link>
       </p>
       <p>
-        <router-link to="/logs">{{ option3 }}</router-link>
+        <router-link to="/logs">
+         <span v-on:click="isHidden = !isHidden">
+          <span v-if="!isHidden">
+            {{ option3 }}
+          </span>
+            </span>
+        </router-link>
       </p>
       <p>
-        <router-link to="/procurement">{{ option4 }}</router-link>
+        <router-link to="/procurement">
+         <span v-on:click="isHidden = !isHidden">
+          <span v-if="!isHidden">
+            {{ option4 }}
+          </span>
+            </span>
+        </router-link>
       </p>
       <p>
-        <router-link to="/search">{{ option5 }}</router-link>
+        <router-link to="/search">
+         <span v-on:click="isHidden = !isHidden">
+          <span v-if="!isHidden">
+            {{ option5 }}
+          </span>
+            </span>
+        </router-link>
       </p>
       <p>
-        <router-link to="/store">{{ option6 }}</router-link>
+        <router-link to="/store">
+         <span v-on:click="isHidden = !isHidden">
+          <span v-if="!isHidden">
+            {{ option6 }}
+          </span>
+            </span>
+        </router-link>
       </p>
       <p>
-        <router-link to="/suppliers">{{ option7 }}</router-link>
+        <router-link to="/suppliers">
+         <span v-on:click="isHidden = !isHidden">
+          <span v-if="!isHidden">
+            {{ option7 }}
+          </span>
+            </span>
+        </router-link>
       </p>
       <p>
-        <router-link to="/task">{{ option8 }}</router-link>
+        <router-link to="/task">
+         <span v-on:click="isHidden = !isHidden">
+          <span v-if="!isHidden">
+            {{ option8 }}
+          </span>
+            </span>
+        </router-link>
       </p>
       <p>
-        <router-link to="/transfers">{{ option9 }}</router-link>
+        <router-link to="/transfers">
+         <span v-on:click="isHidden = !isHidden">
+          <span v-if="!isHidden">
+            {{ option9 }}
+          </span>
+            </span>
+        </router-link>
       </p>
       <p>
-        <router-link to="/users">{{ option10 }}</router-link>
+        <router-link to="/users">
+         <span v-on:click="isHidden = !isHidden"> <!-- must be false -->
+          <span v-if="!isHidden"> <!-- must be false -->
+            {{ option10 }}
+          </span> 
+          </span>
+        </router-link>
       </p>
       <p>
-        <router-link to="/back">{{ option11 }}</router-link>
+        <router-link to="/back">
+          <span v-on:click="isHidden = !isHidden">
+            {{ option11 }}
+          </span>
+        </router-link>
       </p>
     </div>
   </div>
@@ -44,8 +114,8 @@
 
 <script>
 import HelloWorld from "./components/StartPage";
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 import Navbar from "./components/Navbar";
 
 export default {
@@ -54,6 +124,7 @@ export default {
     HelloWorld,
     Navbar,
   },
+
   data() {
     return {
       option0: "Choose from default options:",
@@ -68,6 +139,7 @@ export default {
       option9: "Transfers",
       option10: "Users",
       option11: "Back - StartPage",
+      isHidden: false,
     };
   },
 };

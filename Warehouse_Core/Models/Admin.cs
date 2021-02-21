@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 
 namespace Warehouse_Core.Models
 {
-    public class Admin
+    class Admin:BaseComponent
     {
+        public void AddNewItemToAdmin()
+        {
+        
+            this._mediator.AddNewItem(this,"Admin");
+
+        }
     }
 }

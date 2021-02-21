@@ -18,6 +18,11 @@ namespace Warehouse_Core.Context
                 return;   // DB has been seeded
             }
 
+            if (context.Users.Any())
+            {
+                return;   // DB has been seeded
+            }
+
 
             //INFO
             //Add new migration

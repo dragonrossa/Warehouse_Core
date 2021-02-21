@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 
 namespace Warehouse_Core.Models
 {
-    public class Log
+    class Log:BaseComponent
     {
+        public void AddNewItemToLog()
+        {
+
+            this._mediator.AddNewItem(this, "Log");
+
+        }
     }
 }
