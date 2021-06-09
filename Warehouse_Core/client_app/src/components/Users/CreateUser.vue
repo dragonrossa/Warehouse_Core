@@ -2,26 +2,115 @@
   <div class="hello">
     <Navbar />
     <div id="content">
-      <h3>Add details</h3>
-      <input name="firstName" v-model="Name" placeholder="Name" />
-      <br />
-      <input name="lastName" v-model="LastName" placeholder="Last name" />
-      <br />
-      <input name="username" v-model="UserName" placeholder="Username" />
-      <br />
-      <input name="address" v-model="Address" placeholder="Address" />
-      <br />
-      <input name="hometown" v-model="Hometown" placeholder="Hometown" />
-      <br />
-      <input name="zipcode" v-model="ZipCode" placeholder="Zipcode" />
-      <br />
-      <input name="country" v-model="Country" placeholder="Country" />
-      <br />
-      <input name="mail" v-model="Mail" placeholder="Mail" />
-      <br />
-      <input name="telephone" v-model="Telephone" placeholder="Telephone" />
-      <br />
-      <button v-on:click="sendToServer">Submit</button>
+      <h3 id="titleCreateUser">Add details</h3>
+      <div id="formInputs">
+        <span>First name:</span>
+        <b-form-input
+          name="firstName"
+          v-model="Name"
+          class="inputType"
+          type="text"
+          debounce="500"
+        ></b-form-input>
+        <br />
+      </div>
+      <div id="formInputs">
+        <span>Last name:</span>
+        <b-form-input
+          name="lastName"
+          v-model="LastName"
+          class="inputType"
+          type="text"
+          debounce="500"
+        ></b-form-input>
+        <br />
+      </div>
+      <div id="formInputs">
+        <span>Username:</span>
+        <b-form-input
+          name="username"
+          v-model="UserName"
+          class="inputType"
+          type="text"
+          debounce="500"
+        ></b-form-input>
+        <br />
+      </div>
+      <div id="formInputs">
+        <span>Address:</span>
+        <b-form-input
+          name="address"
+          v-model="Address"
+          class="inputType"
+          type="text"
+          debounce="500"
+        ></b-form-input>
+        <br />
+      </div>
+      <div id="formInputs">
+        <span>Hometown:</span>
+        <b-form-input
+          name="hometown"
+          v-model="Hometown"
+          class="inputType"
+          type="text"
+          debounce="500"
+        ></b-form-input>
+        <br />
+      </div>
+      <div id="formInputs">
+        <span>Zip code:</span>
+        <b-form-input
+          name="zipcode"
+          v-model="ZipCode"
+          class="inputType"
+          type="text"
+          debounce="500"
+        ></b-form-input>
+        <br />
+      </div>
+      <div id="formInputs">
+        <span>Country:</span>
+        <b-form-input
+          name="country"
+          v-model="Country"
+          class="inputType"
+          type="text"
+          debounce="500"
+        ></b-form-input>
+        <br />
+      </div>
+      <div id="formInputs">
+        <span>Mail:</span>
+        <b-form-input
+          name="mail"
+          v-model="Mail"
+          class="inputType"
+          type="text"
+          debounce="500"
+        ></b-form-input>
+        <br />
+      </div>
+      <div id="formInputs">
+        <span>Telephone:</span>
+        <b-form-input
+          name="telephone"
+          v-model="Telephone"
+          class="inputType"
+          type="text"
+          debounce="500"
+        ></b-form-input>
+        <br />
+      </div>
+
+      <div id="submitCreateUser">
+        <b-button
+          :pressed.sync="myToggle"
+          variant="primary"
+          v-on:click="sendToServer"
+          >Submit</b-button
+        >
+      </div>
     </div>
     <router-view></router-view>
   </div>
@@ -35,6 +124,16 @@ export default {
   components: {
     Navbar,
   },
+  data() {
+    return {
+      myToggle: false,
+    };
+  },
+  computed: {
+    btnStates() {
+      return this.buttons.map((btn) => btn.state);
+    },
+  },
   Name: "",
   LastName: "",
   UserName: "",
@@ -46,33 +145,34 @@ export default {
   Telephone: "",
   methods: {
     sendToServer: function () {
-      axios({
-        method: "post",
-        url: "/user/create",
-        data: {
-          Name: this.Name,
-          LastName: this.LastName,
-          UserName: this.UserName,
-          Address: this.Address,
-          Hometown: this.Hometown,
-          ZipCode: this.ZipCode,
-          Country: this.Country,
-          Mail: this.Mail,
-          Telephone: this.Telephone
-        },
-      })
-        .then(function (response) {
-          console.log(response);
+      if (this.myToggle == true) {
+        axios({
+          method: "post",
+          url: "/user/create",
+          data: {
+            Name: this.Name,
+            LastName: this.LastName,
+            UserName: this.UserName,
+            Address: this.Address,
+            Hometown: this.Hometown,
+            ZipCode: this.ZipCode,
+            Country: this.Country,
+            Mail: this.Mail,
+            Telephone: this.Telephone,
+          },
         })
-        .catch(function (error) {
-          console.log(error);
-        });
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
     },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped src="../../assets/style/warehouse_style.css">
 </style>
 

@@ -8,7 +8,7 @@ using Warehouse_Core.Models;
 
 namespace Warehouse_Core.Mediator
 {
-    class ConcreteMediator:IMediator
+    class ConcreteMediator : IMediator
     {
         private Admin _component1;
 
@@ -30,7 +30,7 @@ namespace Warehouse_Core.Mediator
 
         private User _component10;
 
-       
+
 
         public ConcreteMediator(Admin component1, Log component2, Procurement component3,
             Search component4, Storage component5, Store component6, Supplier component7, Warehouse_Core.Models.Task component8,
@@ -58,12 +58,12 @@ namespace Warehouse_Core.Mediator
             this._component10.SetMediator(this);
         }
 
- 
+
 
         public object AddNewItem(object item, string type)
         {
 
-         
+
             if (type == "Admin")
             {
                 this._component1.AddNewItemToAdmin();
@@ -102,7 +102,7 @@ namespace Warehouse_Core.Mediator
             }
             if (type == "User")
             {
-               // this._component10.AddNewItemToUser();
+                // this._component10.AddNewItemToUser();
                 var a = "Ovo je user";
                 return item;
 
@@ -113,6 +113,14 @@ namespace Warehouse_Core.Mediator
 
         public User NewUser(User user, WarehouseContext _context)
         {
+            //check if user data is valid - if yes then save
+
+            if (user.Name == null || user.LastName == null || user.UserName == null || user.Address == null ||
+                user.Hometown == null || user.ZipCode == null || user.Country == null || user.Mail == null || user.Telephone == null )
+            {
+                throw new UserNotFoundException();
+            }
+
             _context.Users.Add(user);
             _context.SaveChanges();
             return user;
