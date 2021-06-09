@@ -3,6 +3,32 @@
     <Navbar />
     <div id="content">
       <h3 id="titleCreateUser">Add details</h3>
+
+      <div class="form-group" :class="{ 'form-group--error': $v.name.$error }">
+        <label class="form__label">Name</label>
+        <input class="form__input" v-model.trim="$v.name.$model" />
+      </div>
+      <div class="error" v-if="!$v.name.required">Field is required</div>
+      <div class="error" v-if="!$v.name.minLength">
+        Name must have at least {{ $v.name.$params.minLength.min }} letters.
+      </div>
+      <tree-view
+        :data="$v.name"
+        :options="{ rootObjectKey: '$v.name', maxDepth: 2 }"
+      ></tree-view>
+      <div class="form-group" :class="{ 'form-group--error': $v.age.$error }">
+        <label class="form__label">Age</label>
+        <input class="form__input" v-model.trim.lazy="$v.age.$model" />
+      </div>
+      <div class="error" v-if="!$v.age.between">
+        Must be between {{ $v.age.$params.between.min }} and
+        {{ $v.age.$params.between.max }}
+      </div>
+      <tree-view
+        :data="$v.age"
+        :options="{ rootObjectKey: '$v.age', maxDepth: 2 }"
+      ></tree-view>
+
       <div id="formInputs">
         <span>First name:</span>
         <b-form-input
@@ -119,6 +145,7 @@
 <script>
 import Navbar from "./../Navbar";
 import axios from "axios";
+import { required, minLength, between } from "vuelidate/lib/validators";
 
 export default {
   components: {
@@ -127,6 +154,17 @@ export default {
   data() {
     return {
       myToggle: false,
+      name: "",
+      age: 0,
+      Name: "",
+      LastName: "",
+      UserName: "",
+      Address: "",
+      Hometown: "",
+      ZipCode: "",
+      Country: "",
+      Mail: "",
+      Telephone: "",
     };
   },
   computed: {
@@ -134,15 +172,15 @@ export default {
       return this.buttons.map((btn) => btn.state);
     },
   },
-  Name: "",
-  LastName: "",
-  UserName: "",
-  Address: "",
-  Hometown: "",
-  ZipCode: "",
-  Country: "",
-  Mail: "",
-  Telephone: "",
+  validations: {
+    name: {
+      required,
+      minLength: minLength(4),
+    },
+    age: {
+      between: between(20, 30),
+    },
+  },
   methods: {
     sendToServer: function () {
       if (this.myToggle == true) {

@@ -4,10 +4,13 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import Vuelidate from 'vuelidate'
+
 // import { BNavbar } from 'bootstrap-vue'
 // Vue.component('b-navbar', BNavbar)
 
 Vue.use(BootstrapVue)
+Vue.use(Vuelidate)
 
 
 import Admin from '@/components/Admin'
